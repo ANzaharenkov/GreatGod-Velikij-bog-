@@ -10,13 +10,14 @@ class mainMenu{
    std::string right_name;
    json data;
    float e = 0.5; 
-   int kleft = 0;
-   int kright = 0;
+   
    SubMenu lSubMenu;
    SubMenu rSubMenu;
    std::string listOfships[3] = {"Iowa", "Bismark", "Yamato"};
    public:
-   mainMenu(std::string _left_name, std::string _right_name):lSubMenu({e * 50.0, e * 100.0}), rSubMenu({e * 1200.0, e * 100.0}), right_name(_right_name), left_name(_left_name){
+   int kleft = 0;
+   int kright = 0;
+   mainMenu(std::string _left_name, std::string _right_name):lSubMenu({e * 50.0, e * 100.0}), rSubMenu({e * 850.0, e * 100.0}), right_name(_right_name), left_name(_left_name){
       std::ifstream f("config.json");
       data = json::parse(f);
    }    
@@ -44,7 +45,7 @@ class mainMenu{
    }
 
    void drawSubmenus(sf::RenderWindow &window){
-      rSubMenu.drawInfo(data, window, kright);
+     rSubMenu.drawInfo(data, window, kright);
      rSubMenu.drawImages(window);
      rSubMenu.drawIndicator(window, kright);
      rSubMenu.drawHead(window, "Right Player");
@@ -64,6 +65,7 @@ class mainMenu{
          if(kright == 3)
          kright = 0;
       }
+
       if((side == -1)&& time - rSubMenu.time_of_press > 0.2){
          rSubMenu.time_of_press = time;
          kleft += direction;

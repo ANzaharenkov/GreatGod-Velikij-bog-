@@ -3,11 +3,13 @@
 //#include "gameplay.cpp"
 #include "GameRes.cpp"
 #include "Menu.cpp"
+
 using kbd = sf::Keyboard;
 int main()
 {
-    int WIDTH = 1800;
-    int HEIGHT = 900;
+    float e = 0.5;
+    int WIDTH = e * 3200;
+    int HEIGHT = e * 1800;
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT),"Torpedo-Bombers");
     std::string screenType = "menu";
     sf::Clock clock;
@@ -50,7 +52,9 @@ int main()
             gameplay.drawTorpedIndicators(window, time);
             gameplay.collisionCheck(time);
             gameplay.drawTorpeds(window, time);
-            if(kbd::isKeyPressed(kbd::Return)){gameplay.fireTorpds(-1, 1, time);}
+            gameplay.drawShips(window, menu.kleft, menu.kright);
+            if(kbd::isKeyPressed(kbd::C)){gameplay.fireTorpds(-1, 1, time);}
+            if(kbd::isKeyPressed(kbd::B)){gameplay.fireTorpds(1, 1, time);}
             if(time >= 30){
                 //условие победы одного из игроков
                 screenType = "results";
@@ -58,6 +62,7 @@ int main()
                 gameres.playMusic();
                 clock.restart();
             }
+        
         } else if (screenType == "results")
         {
             if(time <= 7){

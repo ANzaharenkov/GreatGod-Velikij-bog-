@@ -8,8 +8,8 @@ using json = nlohmann::json;
 class SubMenu{
 private:
    float e = 0.5;
-   int HEIGHT = 900;
-   int WIDTH = 1800;
+   int HEIGHT = e * 1800;
+   int WIDTH = e * 3200;
    sf::Text infoText;
    sf::Text head;
    sf::Font font;
@@ -25,6 +25,7 @@ private:
    const float indicator_radius = e * 15.0;
 public:
     float time_of_press;
+
     SubMenu(double _x, double _y):x(_x),y(_y) {
         font.loadFromFile("fonts/Rockwell.ttf");
         infoText.setFillColor(sf::Color::White);
@@ -33,7 +34,7 @@ public:
         indicator.setFillColor(sf::Color::Red);
         indicator.setRadius(indicator_radius);
         time_of_press = 0;
-        center = e * 6 * HEIGHT/5;
+        center = e * 4 * WIDTH / 5;
         for (size_t i = 0; i < 3; i++)
         {
             imgOfShips[i].loadFromFile("pictures/"+listOfships[i]+ "_side.png");
@@ -51,7 +52,7 @@ public:
 
     void drawIndicator(sf::RenderWindow &window, int k){
         int shift = e * 150;
-        indicator.setPosition(x + center + e * 120, 3 * y + pic_gap + imgOfShips[k].getSize().y * 1.3);
+        indicator.setPosition(x + center + e * 120, 3 * y + pic_gap + imgOfShips[k].getSize().y * 0.4);
         window.draw(indicator);
     }
 
