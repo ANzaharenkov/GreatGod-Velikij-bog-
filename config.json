@@ -3,19 +3,19 @@
         "name": "Iowa",
         "maxXp": 100,
         "recharge_time": 1.0,
-        "maxV": 10,
+        "maxV": 15,
         "quantity_of_torpeds": 4
     },
     "Bismark": {
         "name": "Bismark",
         "maxXp": 100,
         "recharge_time": 3.0,
-        "maxV": 10,
+        "maxV": 20,
         "quantity_of_torpeds": 3
     },
     "Yamato": {
         "name": "Yamato",
-        "maxXp": 100,
+        "maxXp": 150,
         "recharge_time": 3.0,
         "maxV": 10,
         "quantity_of_torpeds": 5

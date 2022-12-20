@@ -8,7 +8,7 @@ class Torpedo{
     float x;
     float y;
     float alpha;
-    float v = 1.0;
+    float v = 6.5;
     bool detonate;
     float detonate_time;
     Torpedo(float _x, float _y, float _alpha): x(_x), y(_y), alpha(_alpha), detonate(false) {}

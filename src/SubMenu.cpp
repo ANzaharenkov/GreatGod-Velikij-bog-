@@ -7,7 +7,7 @@ using json = nlohmann::json;
 
 class SubMenu{
 private:
-   float e = 0.5;
+   float e = 1;
    int HEIGHT = e * 1800;
    int WIDTH = e * 3200;
    sf::Text infoText;
@@ -20,39 +20,37 @@ private:
    sf::Sprite shipPict[3];
    sf::Image imgOfShips[3];
    sf::Texture shipTexture[3];
-   const int pic_gap = e * 150;
+   const int pic_gap = e * 200;
    sf::CircleShape indicator;
    const float indicator_radius = e * 15.0;
 public:
     float time_of_press;
-
     SubMenu(double _x, double _y):x(_x),y(_y) {
         font.loadFromFile("fonts/Rockwell.ttf");
         infoText.setFillColor(sf::Color::White);
-        infoText.setCharacterSize(e * 80);
+        infoText.setCharacterSize(e * 75);
         infoText.setFont(font);
-        indicator.setFillColor(sf::Color::Red);
+        indicator.setFillColor(sf::Color::White);
         indicator.setRadius(indicator_radius);
         time_of_press = 0;
-        center = e * 4 * WIDTH / 5;
+        center = e * 0.5 * HEIGHT;
         for (size_t i = 0; i < 3; i++)
         {
             imgOfShips[i].loadFromFile("pictures/"+listOfships[i]+ "_side.png");
             shipTexture[i].loadFromImage(imgOfShips[i]);
             shipPict[i].setTexture(shipTexture[i]);
             shipPict[i].setScale(e * 0.7, e * 0.7);
-            shipPict[i].setPosition(x + center - imgOfShips[i].getSize().x/7, 5 * y+pic_gap*i);
+            shipPict[i].setPosition(x - 20 * e + center - imgOfShips[i].getSize().x/7, 5 * y+pic_gap*i - 100 * e);
             shipPict[i].setColor(sf::Color(160,160,160));
         }
         head.setFont(font);
         head.setCharacterSize(e * 140);
-        head.setPosition(x + center - e * 70, y);
+        head.setPosition(x + center - e * 150, y);
         head.setFillColor(sf::Color::Yellow);
     }
 
     void drawIndicator(sf::RenderWindow &window, int k){
-        int shift = e * 150;
-        indicator.setPosition(x + center + e * 120, 3 * y + pic_gap + imgOfShips[k].getSize().y * 0.4);
+        indicator.setPosition(x + center + e * 600, y - pic_gap * (k - 2) + imgOfShips[k].getSize().y + 160*e);
         window.draw(indicator);
     }
 

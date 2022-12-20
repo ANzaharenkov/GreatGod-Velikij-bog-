@@ -2,8 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 class GameRes {
+    float e = 1;
+    int WIDTH = e * 3200;
+    int HEIGHT = e * 1800;
     private:
-    float e = 0.5;
     sf::Font font;
     sf::SoundBuffer winmus_buffer;
     sf::Sound win_mus;
@@ -16,7 +18,7 @@ class GameRes {
         text.setCharacterSize(e * 160);
         text.setStyle(sf::Text::Bold); 
         text.setFillColor(sf::Color::White);
-        text.setPosition(e * 1500, e * 30);
+        text.setPosition(WIDTH/2 , e * 30);
         winmus_buffer.loadFromFile("sound_effects/winmus.wav");
         win_mus.setBuffer(winmus_buffer);
     }
