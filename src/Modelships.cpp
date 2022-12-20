@@ -101,6 +101,7 @@ public:
         alphaR = 0;
         alphaL = 0;
         V = 0;
+        time_of_last_fire = 0;
     }    
     
     float shipRotationR(int direction, int kR, float t){

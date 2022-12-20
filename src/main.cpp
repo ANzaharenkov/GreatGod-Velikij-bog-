@@ -23,7 +23,7 @@ int main()
     Gameplay gameplay;
     GameRes gameres;    
     mainMenu menu("Iowa", "Iowa");
-    float timeOflastFrame =0;
+    float timeOflastFrame = 0;
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asSeconds();
@@ -51,6 +51,7 @@ int main()
                 gameplay.reload();
                 screenType = "gameplay";
                 clock.restart();
+                time = 0;
                 //к этому моменту в пуймплей уже загружены все данные, поэтому просто совершается переход
             }
         } else if (screenType == "gameplay")
@@ -94,6 +95,7 @@ int main()
             } else {
                 screenType = "menu";
                 clock.restart();
+                time  = 0;
             }
             
         }

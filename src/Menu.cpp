@@ -25,6 +25,7 @@ class mainMenu{
    void reloadShips(GameShip &lpl, GameShip &rpl){
       left_name = listOfships[kleft];
       right_name = listOfships[kright];
+      
       lpl.name = data[left_name]["name"];
       rpl.name = data[right_name]["name"];
 
@@ -45,6 +46,8 @@ class mainMenu{
 
       lpl.reloadBeforeNewGame();
       rpl.reloadBeforeNewGame();
+      lSubMenu.time_of_press = 0;
+      rSubMenu.time_of_press = 0;
    }
 
    void drawSubmenus(sf::RenderWindow &window){
@@ -78,7 +81,6 @@ class mainMenu{
             kleft = 2;
          if(kleft == 3)
             kleft = 0;
-      std::cout<< kleft << std::endl; 
       }
    }
 };
